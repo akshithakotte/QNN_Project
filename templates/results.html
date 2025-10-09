@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            display: inline-block;
+            max-width: 500px;
+        }
+        .fake { color: red; font-weight: bold; }
+        .real { color: green; font-weight: bold; }
+        .probs {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🧠 Review Analysis Result</h2>
+        <p><strong>Review:</strong> "{{ text }}"</p>
+        <p><strong>Rating:</strong> {{ rating }}</p>
+        <p><strong>Verified:</strong> {{ verified }}</p>
+        <p><strong>Category:</strong> {{ category }}</p>
+
+        {% if result == "Fake Review" %}
+            <h3 class="fake">⚠️ {{ result }}</h3>
+        {% else %}
+            <h3 class="real">✅ {{ result }}</h3>
+        {% endif %}
+
+        <p><strong>Overall Confidence:</strong> {{ avg_prob }}</p>
+
+        <div class="probs">
+            <h4>Model Probabilities:</h4>
+            <ul>
+                <li>Naive Bayes: {{ probs['nb']|round(3) }}</li>
+                <li>SVC: {{ probs['svc']|round(3) }}</li>
+                <li>QNN: {{ probs['qnn']|round(3) }}</li>
+            </ul>
+        </div>
+
+        <a href="/" style="text-decoration:none; display:inline-block; margin-top:15px;">⬅ Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<form action="/predict" method="POST">
+  <textarea name="text" placeholder="Enter review text"></textarea><br>
+  <input type="number" name="rating" placeholder="Rating (1-5)" step="0.1"><br>
+  <select name="verified">
+    <option value="Y">Verified Purchase</option>
+    <option value="N">Not Verified</option>
+  </select><br>
+  <input type="text" name="category" placeholder="Product Category"><br>
+  <button type="submit">Predict</button>
+</form>
