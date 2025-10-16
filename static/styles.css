@@ -1,34 +1,77 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+  color: #222;
+  margin: 0;
 }
-.container {
-  max-width: 800px;
-  margin: 40px auto;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: #2b2d42;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.navbar a:hover {
+  color: #ffd60a;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(120deg, #1a73e8, #5a189a);
+  color: white;
+}
+
+.hero .btn {
   background: #fff;
-  padding: 20px;
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
+
+.form-box, .result-box {
+  width: 60%;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-input,
-textarea {
+
+textarea, input, select {
   width: 100%;
-  padding: 8px;
-  margin-top: 6px;
-}
-button {
-  margin-top: 12px;
-  padding: 10px 16px;
-}
-#result {
-  margin-top: 20px;
-  white-space: pre-wrap;
-  background: #f0f4ff;
+  margin: 10px 0;
   padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 6px;
+}
+
+.btn {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0f5bd8;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #2b2d42;
+  color: #fff;
+  margin-top: 40px;
 }

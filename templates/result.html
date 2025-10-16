@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review Prediction Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 40px; 
+      background: #f5f6f7; 
+      color: #333;
+      text-align: center;
+    }
+    .card { 
+      max-width: 520px; 
+      margin: auto; 
+      background: white; 
+      padding: 28px; 
+      border-radius: 12px; 
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
+      text-align: left;
+    }
+    h2 { 
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
+    p { 
+      font-size: 16px; 
+      line-height: 1.5; 
+      margin: 8px 0;
+    }
+    .fake { 
+      color: red; 
+      font-weight: bold; 
+      text-align: center;
+    }
+    .real { 
+      color: green; 
+      font-weight: bold; 
+      text-align: center;
+    }
+    a.back-link { 
+      display: block; 
+      margin-top: 20px; 
+      text-align: center; 
+      color: #1f3c88; 
+      text-decoration: none; 
+      font-weight: bold; 
+      background: #e8ecf5; 
+      padding: 10px; 
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    a.back-link:hover { 
+      background: #d0d9f0; 
+      text-decoration: underline; 
+    }
+  </style>
+</head>
+<body>
+
+{% include 'navbar.html' %}
+<div style="padding-top:80px;"></div>
+
+<div class="card">
+  <h2>🧠 Review Analysis Result</h2>
+  <p><strong>Review:</strong> "{{ text }}"</p>
+  <p><strong>Rating:</strong> {{ rating }}</p>
+  <p><strong>Verified:</strong> {{ verified }}</p>
+  <p><strong>Category:</strong> {{ category }}</p>
+
+  {% if result == "Fake Review" %}
+    <h3 class="fake">⚠️ {{ result }}</h3>
+  {% else %}
+    <h3 class="real">✅ {{ result }}</h3>
+  {% endif %}
+
+  <a class="back-link" href="{{ url_for('index') }}">⬅ Back to Detection Form</a>
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>

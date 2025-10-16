@@ -11,7 +11,6 @@ from qnn_model import HybridQuantumClassifier, train_qnn
 import torch
 
 def add_noise(X, noise_level=0.01):
-    """Add small random noise to features to reduce overfitting."""
     noise = np.random.normal(0, noise_level, X.shape)
     return X + noise
 
@@ -26,8 +25,6 @@ def train_all(datafile: str, max_train_rows: int = 5000):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y
     )
-
-    # ---------------- Reduce training rows to control accuracy ----------------
     if X_train.shape[0] > max_train_rows:
         indices = np.random.choice(X_train.shape[0], max_train_rows, replace=False)
         X_train = X_train[indices]
@@ -43,7 +40,7 @@ def train_all(datafile: str, max_train_rows: int = 5000):
     print("BernoulliNB accuracy:", round(acc_nb, 3))
 
     # ---------------- SVC ----------------
-    print("Training SVC with controlled complexity...")
+    print("Training SVM with controlled complexity...")
 
     # Add noise and scale
     X_train_svc = add_noise(X_train, noise_level=0.05)
@@ -58,7 +55,7 @@ def train_all(datafile: str, max_train_rows: int = 5000):
     acc_svc = accuracy_score(y_test, svc.predict(X_test_svc))
     acc_svc = min(acc_svc, 0.92)  # cap below 100%
     save_pickle(svc, "svc.sav")
-    print("SVC accuracy:", round(acc_svc, 3))
+    print("SVM accuracy:", round(acc_svc, 3))
 
     # ---------------- Quantum Neural Network ----------------
     n_features = X_train.shape[1]

@@ -1,9 +1,3 @@
-"""
-Preprocessing script for Fake Amazon Review Detection.
-Handles automatic encoding detection and gzip-compressed CSV files.
-Generates TF-IDF, PCA features, and label encodings, and saves transformers in models/.
-"""
-
 import os
 import re
 import gzip
@@ -16,7 +10,6 @@ from utils import save_pickle
 
 
 def clean_text(s: str) -> str:
-    """Simple text cleaner: lowercasing, removing punctuation, multiple spaces."""
     s = str(s)
     s = re.sub(r"[^a-zA-Z0-9\s]", " ", s)
     s = s.lower()
@@ -25,7 +18,6 @@ def clean_text(s: str) -> str:
 
 
 def load_csv_safe(csv_path: str) -> pd.DataFrame:
-    """Try reading CSV with multiple encodings and gzip support."""
     encodings = ["utf-8", "ISO-8859-1", "latin1"]
 
     # Check if file might be gzipped
@@ -51,7 +43,6 @@ def load_csv_safe(csv_path: str) -> pd.DataFrame:
 
 
 def build_features(csv_path: str, max_tfidf: int = 100, pca_components: int = 6):
-    """Builds TF-IDF, encodings, PCA features, and labels."""
     df = load_csv_safe(csv_path)
     required_cols = ["REVIEW_TEXT", "RATING", "VERIFIED_PURCHASE", "PRODUCT_CATEGORY"]
 

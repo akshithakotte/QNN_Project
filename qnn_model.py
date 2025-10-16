@@ -32,7 +32,6 @@ class HybridQuantumClassifier(nn.Module):
 
 
 def train_qnn(model, X_train, y_train, epochs=5, batch_size=16, lr=0.01):
-    """Train the QNN with batch processing and BCEWithLogitsLoss"""
     model.train()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     criterion = nn.BCEWithLogitsLoss()
